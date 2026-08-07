@@ -1,0 +1,15 @@
+cxx = c++
+cflags = -std=c++20 -Wall -Wextra -O2
+
+rule cc
+    command = $cxx $cflags -c $in -o $out
+    description = CC $out
+
+rule link
+    command = $cxx $cflags $in -o $out -pthread
+    description = LINK $out
+
+build build/main.o: cc src/main.cpp
+build glossy: link build/main.o
+
+default glossy
