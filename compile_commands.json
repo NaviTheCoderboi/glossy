@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/typeiso/pproj/glossy",
+    "command": "c++ -std=c++20 -Wall -Wextra -O2 -c src/main.cpp -o build/main.o",
+    "file": "/home/typeiso/pproj/glossy/src/main.cpp"
+  }
+]
