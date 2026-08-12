@@ -16,10 +16,12 @@ struct Overloaded : Ts... {
 template <class... Ts>
 Overloaded(Ts...) -> Overloaded<Ts...>;
 
+namespace concepts 
+{
 template <typename T>
 concept Arithmetic = std::integral<T> || std::floating_point<T>;
-
-template <Arithmetic T = float>
+}
+template <concepts::Arithmetic T = float>
 struct Vec2D {
     T x{};
     T y{};
@@ -73,36 +75,36 @@ struct Vec2D {
     }
 };
 
-template <Arithmetic T>
+template <concepts::Arithmetic T>
 constexpr Vec2D<T> operator+(Vec2D<T> lhs, const Vec2D<T>& rhs) noexcept {
     lhs += rhs;
     return lhs;
 }
 
-template <Arithmetic T>
+template <concepts::Arithmetic T>
 constexpr Vec2D<T> operator-(Vec2D<T> lhs, const Vec2D<T>& rhs) noexcept {
     lhs -= rhs;
     return lhs;
 }
 
-template <Arithmetic T>
+template <concepts::Arithmetic T>
 constexpr Vec2D<T> operator*(Vec2D<T> vec, T scalar) noexcept {
     vec *= scalar;
     return vec;
 }
 
-template <Arithmetic T>
+template <concepts::Arithmetic T>
 constexpr Vec2D<T> operator*(T scalar, Vec2D<T> vec) noexcept {
     vec *= scalar;
     return vec;
 }
 
-template <Arithmetic T>
+template <concepts::Arithmetic T>
 constexpr Vec2D<T> max(const Vec2D<T>& a, const Vec2D<T>& b) noexcept {
     return {std::max(a.x, b.x), std::max(a.y, b.y)};
 };
 
-template <Arithmetic T>
+template <concepts::Arithmetic T>
 constexpr Vec2D<T> min(const Vec2D<T>& a, const Vec2D<T>& b) noexcept {
     return {std::min(a.x, b.x), std::min(a.y, b.y)};
 };
