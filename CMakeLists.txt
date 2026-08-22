@@ -20,5 +20,5 @@ target_sources(${PROJECT_NAME} PRIVATE
     ${HEADER_FILES}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
-    ${SRC_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
